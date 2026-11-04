@@ -139,4 +139,5 @@
 ## 지난 AI 글 모음
 
 - [2026-08-06 ~ 2026-11-04](ai-posts/2026-08-06_2026-11-04.md)
+- [AI 엔지니어링 실무 글 모음 (팀 공유용, 140개)](ai-posts/ai-engineering-picks_2026-08-06_2026-11-04.md)
 - 다시 만들기: `python scripts/recent_ai_posts.py --days 90 --out ai-posts/<기간>.md`
