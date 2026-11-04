@@ -1,0 +1,56 @@
+name: 새 글 알림
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # 매일 09:00 KST (00:00 UTC). GitHub 사정으로 몇 분~수십 분 늦을 수 있다.
+  workflow_dispatch: {}
+
+permissions:
+  contents: write # state/seen.json 커밋
+  issues: write # 알림 이슈 생성
+
+concurrency:
+  group: daily-new-posts
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: 새 글 확인
+        id: check
+        run: |
+          python scripts/check_new_posts.py --body issue.md | tee result.txt
+          grep '^new_count=' result.txt >> "$GITHUB_OUTPUT"
+
+      - name: 알림 이슈 만들기
+        if: steps.check.outputs.new_count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEW_COUNT: ${{ steps.check.outputs.new_count }}
+        run: |
+          gh label create new-posts --color 0E8A16 --description "새 기술 블로그 글 알림" 2>/dev/null || true
+          gh issue create \
+            --title "새 기술 블로그 글 $(TZ=Asia/Seoul date +%Y-%m-%d) · ${NEW_COUNT}개" \
+            --body-file issue.md \
+            --label new-posts \
+            --assignee "${{ github.repository_owner }}"
+
+      - name: 확인 기록 저장
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/seen.json
+          git diff --cached --quiet || git commit -m "새 글 확인 기록 갱신 ($(TZ=Asia/Seoul date +%Y-%m-%d))"
+          git push

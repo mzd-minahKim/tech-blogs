@@ -123,3 +123,12 @@
 
 - PayPal은 2026년 6월에 Medium(`medium.com/paypal-tech`)을 닫고 개발자 사이트 블로그로 옮겼습니다.
 - Discord와 Vercel 블로그에는 마케팅·제품 소식 글이 섞여 있습니다.
+
+## 새 글 알림
+
+매일 09:00(KST)에 GitHub Actions(`.github/workflows/daily-new-posts.yml`)가 블로그들을 확인하고, 새 글이 있으면 `new-posts` 라벨을 단 이슈로 알려줍니다.
+
+- 확인할 블로그: `sources.yml` (RSS가 있으면 `feed`, 없으면 목록 페이지 링크를 비교하는 `page_pattern`)
+- 이미 본 글 기록: `state/seen.json` (Actions가 매일 커밋)
+- 블로그를 추가하면 첫 실행에서는 기준만 잡고, 그다음 날부터 새 글을 알려줍니다.
+- Actions 탭에서 `새 글 알림` → `Run workflow`로 바로 실행할 수 있습니다.
