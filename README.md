@@ -126,9 +126,17 @@
 
 ## 새 글 알림
 
-매일 09:00(KST)에 GitHub Actions(`.github/workflows/daily-new-posts.yml`)가 블로그들을 확인하고, 새 글이 있으면 `new-posts` 라벨을 단 이슈로 알려줍니다.
+매일 09:00(KST)에 GitHub Actions(`.github/workflows/daily-new-posts.yml`)가 블로그들을 확인하고, 새 **AI 관련 글**이 있으면 `new-posts` 라벨을 단 이슈로 알려줍니다.
+
+- AI 글 기준: 해외 AI 블로그는 모든 글, 나머지는 제목에 AI 키워드가 있거나 AI 카테고리 경로에 있는 글 (`scripts/check_new_posts.py`의 `AI_KEYWORDS`, `AI_PATH`)
+- AI가 아닌 새 글은 이슈 맨 아래에 접어서 보여주고, AI 글이 없는 날은 이슈를 만들지 않습니다.
 
 - 확인할 블로그: `sources.yml` (RSS가 있으면 `feed`, 없으면 목록 페이지 링크를 비교하는 `page_pattern`)
 - 이미 본 글 기록: `state/seen.json` (Actions가 매일 커밋)
 - 블로그를 추가하면 첫 실행에서는 기준만 잡고, 그다음 날부터 새 글을 알려줍니다.
 - Actions 탭에서 `새 글 알림` → `Run workflow`로 바로 실행할 수 있습니다.
+
+## 지난 AI 글 모음
+
+- [2026-08-06 ~ 2026-11-04](ai-posts/2026-08-06_2026-11-04.md)
+- 다시 만들기: `python scripts/recent_ai_posts.py --days 90 --out ai-posts/<기간>.md`

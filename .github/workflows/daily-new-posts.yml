@@ -42,7 +42,7 @@ jobs:
         run: |
           gh label create new-posts --color 0E8A16 --description "새 기술 블로그 글 알림" 2>/dev/null || true
           gh issue create \
-            --title "새 기술 블로그 글 $(TZ=Asia/Seoul date +%Y-%m-%d) · ${NEW_COUNT}개" \
+            --title "새 AI 글 $(TZ=Asia/Seoul date +%Y-%m-%d) · ${NEW_COUNT}개" \
             --body-file issue.md \
             --label new-posts \
             --assignee "${{ github.repository_owner }}"

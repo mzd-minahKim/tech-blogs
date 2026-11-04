@@ -35,6 +35,43 @@ KEEP_PER_SOURCE = 500  # 블로그별로 기억해 둘 글 개수
 MAX_AGE_DAYS = 7  # 날짜가 있는 글은 이보다 오래되면 새 글로 치지 않는다 (피드 주소·형식이 바뀐 경우 대비)
 MAX_PER_SOURCE = 10  # 한 번에 한 블로그에서 보고할 최대 글 수
 
+# AI 글 고르기: 이 섹션의 블로그는 전부 AI 글로 보고,
+# 나머지는 제목에 아래 키워드가 있을 때만 AI 글로 본다.
+AI_SECTIONS = {"해외 AI"}
+_EN = (
+    r"AI|A\.I\.|ML|LLMs?|GenAI|GPT-?\w*|RAG|MCP|NLP|AGI|"
+    r"Claude|Gemini|ChatGPT|Copilot|Llama|Mistral|OpenAI|Anthropic|"
+    r"agents?|agentic|machine learning|deep learning|neural|transformers?|"
+    r"embeddings?|fine-?tun\w*|inference|prompt\w*|vector (?:db|database|search)|"
+    r"diffusion|multimodal|reinforcement learning|RLHF|foundation models?|language models?|GPUs?|AIDC"
+)
+# 블로그가 글을 AI 카테고리 경로에 둔 경우 (예: engineering.fb.com/.../ml-applications/...)
+AI_PATH = re.compile(
+    r"/(?:ai|ml|llm|ml-applications|machine-learning|artificial-intelligence|generative-ai|genai)(?:/|$)", re.I
+)
+_KO = (
+    r"인공지능|머신\s?러닝|딥\s?러닝|생성형|에이전트|임베딩|파인\s?튜닝|추론|프롬프트|"
+    r"언어\s?모델|벡터\s?(?:DB|검색|데이터베이스)|신경망|강화\s?학습|챗봇|바이브\s?코딩|하네스"
+)
+# 영어 키워드는 앞뒤가 영문자가 아닐 때만 맞춘다 ("AI가"는 맞고, "Airbnb", "HTML"은 안 맞는다)
+AI_KEYWORDS = re.compile(rf"(?<![A-Za-z])(?:{_EN})(?![A-Za-z])|{_KO}", re.I)
+# 대소문자를 구분해야 하는 짧은 약어 ("ml", "rag"처럼 소문자로 쓰인 일반 단어 방지)
+_CASE_SENSITIVE = {"ai", "a.i.", "ml", "rag", "mcp", "nlp", "agi"}
+
+
+def is_ai(section: str, post: dict) -> bool:
+    if section in AI_SECTIONS:
+        return True
+    if AI_PATH.search(urllib.parse.urlparse(post["link"]).path):
+        return True
+    # 소개 문단까지 보면 AI를 지나가듯 언급한 글(행사 후기, 월간 소식 등)이 많이 걸려서 제목만 본다
+    for m in AI_KEYWORDS.finditer(post["title"]):
+        word = m.group(0)
+        if word.lower() in _CASE_SENSITIVE and not word.isupper():
+            continue
+        return True
+    return False
+
 
 def fetch(url: str) -> tuple[str, bytes]:
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "ko,en;q=0.8"})
@@ -51,18 +88,24 @@ def read_feed(src: dict) -> list[dict]:
     parsed = feedparser.parse(body)
     if not parsed.entries:
         raise RuntimeError("피드에 글이 없음")
+    # 피드에 블로그 외 글이 섞여 있으면(예: Vercel의 changelog) link_pattern에 맞는 글만 남긴다
+    keep = re.compile(src["link_pattern"]) if "link_pattern" in src else None
     posts = []
     for e in parsed.entries:
         link = e.get("link") or ""
+        if keep and not keep.search(urllib.parse.urlparse(link).path):
+            continue
         pid = e.get("id") or link
         if not pid:
             continue
         ts = e.get("published_parsed") or e.get("updated_parsed")
+        summary = re.sub(r"<[^>]+>", " ", e.get("summary") or "")
         posts.append({
             "id": pid,
             "title": (e.get("title") or link).strip(),
             "link": link or pid,
             "ts": calendar.timegm(ts) if ts else None,
+            "summary": re.sub(r"\s+", " ", summary).strip()[:1000],
         })
     return posts
 
@@ -101,6 +144,25 @@ def check(src: dict) -> list[dict]:
         return reader(src)
 
 
+def post_line(p: dict) -> str:
+    when = " · " + datetime.fromtimestamp(p["ts"], KST).strftime("%m-%d") if p["ts"] else ""
+    title = p["title"].replace("[", "\\[").replace("]", "\\]")
+    return f"[{title}]({p['link']}){when}"
+
+
+def render(report: dict[str, list[tuple[dict, list[dict]]]]) -> list[str]:
+    lines = []
+    for sec, items in report.items():
+        if not items:
+            continue
+        lines.append(f"## {sec}\n")
+        for s, posts in items:
+            lines.append(f"### {s['name']}")
+            lines.extend(f"- {post_line(p)}" for p in posts)
+            lines.append("")
+    return lines
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--body", required=True, help="이슈 본문을 쓸 파일")
@@ -123,6 +185,7 @@ def main() -> None:
     cutoff = time.time() - MAX_AGE_DAYS * 86400
     report: dict[str, list[tuple[str, list[dict]]]] = {sec: [] for sec in sections}
     failed, seeded = [], []
+    others: list[tuple[dict, dict]] = []  # AI가 아닌 새 글 (이슈 맨 아래에 접어서 보여준다)
     shown_links = set()  # 여러 블로그에 같은 글이 걸린 경우(예: Meta와 Instagram) 한 번만 보여준다
 
     for sec, s in sources:
@@ -141,8 +204,10 @@ def main() -> None:
         new = [p for p in res if p["id"] not in known_set and (p["ts"] is None or p["ts"] >= cutoff)]
         new = [p for p in new if p["link"] not in shown_links][:MAX_PER_SOURCE]
         shown_links.update(p["link"] for p in new)
-        if new:
-            report[sec].append((s, new))
+        ai = [p for p in new if is_ai(sec, p)]
+        if ai:
+            report[sec].append((s, ai))
+        others.extend((s, p) for p in new if not is_ai(sec, p))
         # 새로 본 글을 앞에 두고, 이전 기록을 이어 붙여 개수를 제한한다
         merged = ids + [i for i in known if i not in set(ids)]
         state[name] = merged[:KEEP_PER_SOURCE]
@@ -151,20 +216,11 @@ def main() -> None:
     STATE.write_text(json.dumps(state, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
 
     new_count = sum(len(posts) for items in report.values() for _, posts in items)
-    lines = []
-    for sec, items in report.items():
-        if not items:
-            continue
-        lines.append(f"## {sec}\n")
-        for s, posts in items:
-            lines.append(f"### {s['name']}")
-            for p in posts:
-                when = ""
-                if p["ts"]:
-                    when = " · " + datetime.fromtimestamp(p["ts"], KST).strftime("%m-%d")
-                title = p["title"].replace("[", "\\[").replace("]", "\\]")
-                lines.append(f"- [{title}]({p['link']}){when}")
-            lines.append("")
+    lines = render(report)
+    if others:
+        lines.append(f"<details><summary>AI 외 새 글 {len(others)}개</summary>\n")
+        lines.extend(f"- {s['name']}: {post_line(p)}" for s, p in others)
+        lines.append("\n</details>\n")
     if seeded:
         lines.append(f"<sub>처음 등록되어 기준만 잡은 곳: {', '.join(seeded)}</sub>\n")
     if failed:
@@ -176,6 +232,7 @@ def main() -> None:
     for f in failed:
         print(f"확인 실패: {f}")
     print(f"sources={len(sources)} failed={len(failed)} seeded={len(seeded)}")
+    print(f"other_count={len(others)}")
     print(f"new_count={new_count}")
 
 
