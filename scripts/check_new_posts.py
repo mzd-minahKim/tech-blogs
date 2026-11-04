@@ -173,6 +173,8 @@ def main() -> None:
         lines.append("\n</details>")
     Path(args.body).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
+    for f in failed:
+        print(f"확인 실패: {f}")
     print(f"sources={len(sources)} failed={len(failed)} seeded={len(seeded)}")
     print(f"new_count={new_count}")
 
