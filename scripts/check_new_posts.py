@@ -144,10 +144,31 @@ def check(src: dict) -> list[dict]:
         return reader(src)
 
 
+def translate(text: str) -> str | None:
+    """영어 제목을 한국어로 옮긴다. 키 없이 쓰는 Google 번역 주소라 실패하면 None을 돌려 원제목을 그대로 쓴다."""
+    q = urllib.parse.urlencode({"client": "gtx", "sl": "auto", "tl": "ko", "dt": "t", "q": text})
+    try:
+        _, body = fetch(f"https://translate.googleapis.com/translate_a/single?{q}")
+        out = "".join(seg[0] for seg in json.loads(body)[0] if seg[0]).strip()
+        return out if out and out != text else None
+    except Exception:  # noqa: BLE001 - 번역은 덤이라 실패해도 알림은 나가야 한다
+        return None
+
+
+def add_korean_titles(posts: list[dict]) -> None:
+    targets = [p for p in posts if not re.search(r"[가-힣]", p["title"])]
+    with cf.ThreadPoolExecutor(8) as ex:
+        for p, ko in zip(targets, ex.map(lambda p: translate(p["title"]), targets)):
+            if ko:
+                p["title_ko"] = ko
+
+
 def post_line(p: dict) -> str:
     when = " · " + datetime.fromtimestamp(p["ts"], KST).strftime("%m-%d") if p["ts"] else ""
-    title = p["title"].replace("[", "\\[").replace("]", "\\]")
-    return f"[{title}]({p['link']}){when}"
+    esc = lambda s: s.replace("[", "\\[").replace("]", "\\]")  # noqa: E731
+    if p.get("title_ko"):
+        return f"[{esc(p['title_ko'])}]({p['link']}){when}<br><sub>{p['title'].replace('<', '&lt;')}</sub>"
+    return f"[{esc(p['title'])}]({p['link']}){when}"
 
 
 def render(report: dict[str, list[tuple[dict, list[dict]]]]) -> list[str]:
@@ -216,6 +237,7 @@ def main() -> None:
     STATE.write_text(json.dumps(state, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
 
     new_count = sum(len(posts) for items in report.values() for _, posts in items)
+    add_korean_titles([p for items in report.values() for _, posts in items for p in posts])
     lines = render(report)
     if others:
         lines.append(f"<details><summary>AI 외 새 글 {len(others)}개</summary>\n")
