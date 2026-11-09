@@ -90,18 +90,18 @@ AI가 만드는 속도보다 사람이 이해하고 검증하는 속도가 병�
   자체 모델로 '전부 대체' 대신 일치율 99.9%를 지키는 트래픽만 떼어냄. 임계값 정하는 법까지 공개.
 - **[사내 LLM 요청을 한곳으로 모은 AI Gateway 구축기](https://tech.inflab.com/20260825-ai-gateway/)** · 인프랩 (인프런)  
   LLM 사용처 30곳 이상을 게이트웨이 하나로. 모델 이름 대신 비용 상한이 있는 등급으로 추상화.
-- **[Portal by Spotify cut my Claude Code token usage by 90%](https://engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90/)** · Spotify  
+- **[Spotify의 Portal로 Claude Code 토큰 사용량 90% 줄이기](https://engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90/) <sub>Portal by Spotify cut my Claude Code token usage by 90%</sub>** · Spotify  
   Claude Code의 파일 읽기를 훅으로 가로채 Gemini Flash로 위임. 설정과 한계까지 재현 가능.
-- **[Lessons from scaling teams of coding agents](https://cohere.com/blog/lessons-from-scaling-teams-of-frontier-coding-agents)** · Cohere  
+- **[코딩 에이전트 팀을 키우며 배운 것: 비용 30%로 최상위 성능 내기](https://cohere.com/blog/lessons-from-scaling-teams-of-frontier-coding-agents) <sub>Lessons from scaling teams of coding agents: reach the frontier at 30% of the cost</sub>** · Cohere  
   코딩 에이전트 팀 통제 실험. 탐색·계획만 위임해도 성능은 같고 비용은 절반.
 
 ### 에이전트 설계
 
-- **[The Thin Orchestrator: How We Made Our AI Agents More Reliable by Giving the Router Less to Do](https://engineering.fb.com/2026/10/19/ml-applications/thin-orchestrator-ai-agent-architecture/)** · Meta  
+- **[Thin Orchestrator: 라우터 일을 줄여 AI 에이전트를 더 안정적으로 만든 방법](https://engineering.fb.com/2026/10/19/ml-applications/thin-orchestrator-ai-agent-architecture/) <sub>The Thin Orchestrator: How We Made Our AI Agents More Reliable by Giving the Router Less to Do</sub>** · Meta  
   만능 에이전트 대신 결정적 라우터와 격리된 전문 서브에이전트 14개. 확장은 템플릿으로.
 - **[LLM에게 어디까지 맡길 것인가: AI 에이전트 기반 광고 분석 리포트 자동화](https://techblog.lycorp.co.jp/ko/ai-agent-ad-report-automation)** · LINE  
   광고 리포트 자동화. 계산은 코드, 해석은 LLM, 원인 탐색은 그래프와 호출 상한으로 제한.
-- **[Making Failure Diagnosis Reliable with Pensive AI](https://netflixtechblog.com/making-failure-diagnosis-reliable-with-pensive-ai-6b0811a1c015)** · Netflix  
+- **[Pensive AI로 장애 진단을 믿을 수 있게 만들기](https://netflixtechblog.com/making-failure-diagnosis-reliable-with-pensive-ai-6b0811a1c015) <sub>Making Failure Diagnosis Reliable with Pensive AI</sub>** · Netflix  
   규칙 기반 진단의 'unknown' 절반을 AI로 메움. 신뢰성은 모델이 아니라 주변 시스템에서.
 - **[팀이 신뢰할 수 있는 AI 분석 환경 만들기: 추천팀의 컨텍스트 설계](https://tech.kakao.com/posts/844)** · 카카오  
   개인 CLAUDE.md의 한계를 팀 공용 컨텍스트(What·How·Why)로 해결한 구조 예시.
@@ -112,9 +112,9 @@ AI가 만드는 속도보다 사람이 이해하고 검증하는 속도가 병�
   리더보드에 없던 모델을 고른 과정. 탈락 기준, pass^k, 점진 배포 절차.
 - **[리더보드 1등 LLM, 토스에서도 1등일까? - Toss Benchmark 구축기](https://toss.tech/article/toss-benchmark)** · 토스  
   사내 벤치마크 구축기. 공개 지표가 실제 업무 성과와 상관이 없다는 것을 수치로 보여줌.
-- **[The Agent Said It Was Done. The Database Disagreed.](https://huggingface.co/blog/microsoft/thinkingbox)** · Hugging Face  
+- **[에이전트는 끝났다고 했다. 데이터베이스는 아니라고 했다.](https://huggingface.co/blog/microsoft/thinkingbox) <sub>The Agent Said It Was Done. The Database Disagreed.</sub>** · Hugging Face  
   업무 507개를 모델당 20회씩 반복. 한 번 성공과 매번 성공의 차이, 성공당 비용.
-- **[Grab Bench: Evaluating AI on Grab-shaped production work](https://engineering.grab.com/grab-bench-evaluating-ai)** · Grab  
+- **[Grab Bench: Grab의 실제 업무로 AI 평가하기](https://engineering.grab.com/grab-bench-evaluating-ai) <sub>Grab Bench: Evaluating AI on Grab-shaped production work</sub>** · Grab  
   그럴듯한 오답을 잡는 eval 설계 원칙. 일부러 나쁜 답안으로 eval 자체를 검증.
 
 ### 플랫폼·지식
@@ -133,10 +133,10 @@ AI가 만드는 속도보다 사람이 이해하고 검증하는 속도가 병�
 
 ## 함께 보면 좋은 글
 
-- [High-Signal AI Code Review That Adapts to Your Codebase at Scale](https://www.linkedin.com/blog/engineering/ai/high-signal-ai-code-review-that-adapts-to-your-codebase-at-scale) · LinkedIn
-- [Designing MCP Gateway](https://www.uber.com/us/en/blog/designing-mcp-gateway) · Uber
-- [How PayPal is governing agent skills at enterprise scale](https://developer.paypal.com/community/blog/agent_skills_at_enterprise_scale) · PayPal
-- [Your Agent Aced the Task. Will It Do It Again?](https://huggingface.co/blog/ibm-research/altk-evolve-consistency) · Hugging Face
+- [코드베이스에 맞춰 적응하는, 신호 높은 대규모 AI 코드 리뷰](https://www.linkedin.com/blog/engineering/ai/high-signal-ai-code-review-that-adapts-to-your-codebase-at-scale) <sub>High-Signal AI Code Review That Adapts to Your Codebase at Scale</sub> · LinkedIn
+- [MCP Gateway 설계: Uber의 MCP 관리 플랫폼](https://www.uber.com/us/en/blog/designing-mcp-gateway) <sub>Designing MCP Gateway</sub> · Uber
+- [PayPal이 전사 규모로 에이전트 스킬을 관리하는 방법](https://developer.paypal.com/community/blog/agent_skills_at_enterprise_scale) <sub>How PayPal is governing agent skills at enterprise scale</sub> · PayPal
+- [에이전트가 작업을 해냈다. 다음에도 해낼까?](https://huggingface.co/blog/ibm-research/altk-evolve-consistency) <sub>Your Agent Aced the Task. Will It Do It Again?</sub> · Hugging Face
 - [블로그 발행 MCP를 직접 만들며 확인한 AI 에이전트 실무 원칙 - 구성요소부터 사람 승인까지](http://devocean.sk.com/blog/techBoardDetail.do?id=168583&boardType=techBlog&isShared=Y) · SK텔레콤 DEVOCEAN
 - [머릿속에 있던 로그 정의 기준을 모두의 AI 스킬로 만들기](https://toss.tech/article/dataops-log-definition-skill) · 토스
 - [데이터 분석 에이전트를 만들며 배운 컨텍스트 설계](https://tech.kakao.com/posts/838) · 카카오
@@ -144,6 +144,6 @@ AI가 만드는 속도보다 사람이 이해하고 검증하는 속도가 병�
 - [LLM Wiki: 코드 기준으로 자동 최신화되는 도메인 지식 SSOT 만들기](https://techblog.lycorp.co.jp/ko/llm-wiki-code-driven-knowledge-ssot) · LINE
 - [AI Native 조직은 도메인 지식을 어떻게 공유하는가](https://techblog.musinsa.com/ai-native-%EC%A1%B0%EC%A7%81%EC%9D%80-%EB%8F%84%EB%A9%94%EC%9D%B8-%EC%A7%80%EC%8B%9D%EC%9D%84-%EC%96%B4%EB%96%BB%EA%B2%8C-%EA%B3%B5%EC%9C%A0%ED%95%98%EB%8A%94%EA%B0%80-f2e3de607df3) · 무신사 (29CM 통합)
 - [보안 업무를 위한 AI 에이전트 플랫폼 「SAGE」 개발기 1편: 판단은 사람에게 남기는 설계](https://techblog.lycorp.co.jp/ko/ai-agent-platform-sage-dev-log-part-1) · LINE
-- [Evaluating AI agents: moving past the vibe check](https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/) · Google
-- [Cost per task: Using cheap classifiers to route across Gemini models and thinking levels](https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels/) · Google
-- [AI Changed How Spotify Builds. What We Learned (and Fixed) About Quality at Higher Velocity](https://engineering.atspotify.com/2026/9/ai-changed-how-spotify-builds-what-we-learned-and-fixed-about-quality-at-higher-velocity/) · Spotify
+- [AI 에이전트 평가: 감으로 보는 단계에서 벗어나기](https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/) <sub>Evaluating AI agents: moving past the vibe check</sub> · Google
+- [작업당 비용: 저렴한 분류기로 Gemini 모델과 사고 수준 라우팅하기](https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels/) <sub>Cost per task: Using cheap classifiers to route across Gemini models and thinking levels</sub> · Google
+- [AI가 바꾼 Spotify의 개발 방식: 빨라진 속도에서 품질에 대해 배우고 고친 것](https://engineering.atspotify.com/2026/9/ai-changed-how-spotify-builds-what-we-learned-and-fixed-about-quality-at-higher-velocity/) <sub>AI Changed How Spotify Builds. What We Learned (and Fixed) About Quality at Higher Velocity</sub> · Spotify
