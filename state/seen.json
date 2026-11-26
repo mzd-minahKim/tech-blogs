@@ -242,6 +242,7 @@
   "https://www.anthropic.com/research/redesigning-source-control",
   "https://www.anthropic.com/research/harness-design-long-running-apps",
   "https://www.anthropic.com/research/AI-resistant-technical-evaluations",
+  "https://www.anthropic.com/research/migrating-api-to-rust",
   "https://www.anthropic.com/research/building-strong-safety-evaluations",
   "https://www.anthropic.com/research/how-we-contain-claude",
   "https://www.anthropic.com/research/april-23-postmortem",
@@ -270,6 +271,7 @@
   "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
   "https://www.anthropic.com/research/how-researchers-use-claude",
   "https://www.anthropic.com/research/agents-judgment-calls",
+  "https://www.anthropic.com/research/migrating-api-to-rust",
   "https://www.anthropic.com/research/working-with-ai",
   "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines",
   "https://www.anthropic.com/research/building-strong-safety-evaluations",
@@ -359,6 +361,7 @@
   "https://www.canva.dev/blog/engineering/canva-incident-report-api-gateway-outage/"
  ],
  "Cloudflare": [
+  "01M87EHEACB4SNPV680X1CZPQ1",
   "01M7XNSFEMYQNMHGRYWVF2TQ82",
   "01M7X91JJQ5CWGQ65DZBAHW4Q9",
   "01M7X76K1JK00SF9K4YN83WANQ",
@@ -397,7 +400,6 @@
   "01M510YDY2PS6BYR03DF8HHG2D"
  ],
  "Cohere": [
-  "https://cohere.com/blog/rerank-5",
   "https://cohere.com/blog/cohere-expands-its-sovereign-ai-platform-with-aisle-and-cubic",
   "https://cohere.com/blog/cohere-and-aisle-sign-letter-of-intent-to-advance-cyber-resilient-sovereign-ai",
   "https://cohere.com/blog/introducing-north-2",
@@ -405,6 +407,7 @@
   "https://cohere.com/blog/ai-readiness-assessment",
   "https://cohere.com/blog/crunchbase-in-north",
   "https://cohere.com/blog/video-intelligence-preview",
+  "https://cohere.com/blog/rerank-5",
   "https://cohere.com/blog/embed-5",
   "https://cohere.com/blog/compass-cloud-beta",
   "https://cohere.com/blog/north-small-translate",
@@ -1188,6 +1191,8 @@
   "https://www.figma.com/blog/inside-figma-securing-internal-web-apps/"
  ],
  "GitHub": [
+  "https://github.blog/?p=100468",
+  "https://github.blog/?p=99982",
   "https://github.blog/?p=100438",
   "https://github.blog/?p=100161",
   "https://github.blog/?p=100215",
@@ -1255,6 +1260,7 @@
   "https://developers.googleblog.com/announcing-dpop-support-for-google-oauth-securing-refresh-tokens/"
  ],
  "Google DeepMind": [
+  "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/",
   "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/",
   "https://deepmind.google/blog/introducing-gemini-4-neon/",
   "https://deepmind.google/blog/genie-4-is-now-available/",
@@ -1367,6 +1373,7 @@
   "https://deepmind.google/blog/how-were-bringing-ai-image-verification-to-the-gemini-app/"
  ],
  "Google Research": [
+  "https://research.google/blog/verifiable-social-reasoning-for-llm-assistants/",
   "https://research.google/blog/supercharging-transformer-residual-connections/",
   "https://research.google/blog/how-google-duplex-evolved-to-also-call-businesses-for-you-in-gemini/",
   "https://research.google/blog/a-game-you-cannot-win-unless-you-have-a-quantum-computer/",
@@ -1495,14 +1502,15 @@
   "https://engineering.grab.com/crowdsourced-taxonomy-verification"
  ],
  "Hugging Face": [
-  "https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance",
-  "https://huggingface.co/blog/allenai/robotrack",
+  "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+  "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents",
+  "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
+  "https://huggingface.co/blog/inkling-2-mini-inference-hillclimb",
   "https://huggingface.co/blog/agentic-evals",
   "https://huggingface.co/blog/inkling2mini",
   "https://huggingface.co/blog/harness-adapters-at-scale",
   "https://huggingface.co/blog/RadixArk/daisyrose-27b-pushing-the-frontier-of-post-trainin",
   "https://huggingface.co/blog/Dharma-AI/predicting-fine-tuning-time",
-  "https://huggingface.co/blog/ibm-research/time-series-powered-streamhouse",
   "https://huggingface.co/blog/moe-expert-streaming",
   "https://huggingface.co/blog/rumble-2-flash",
   "https://huggingface.co/blog/openrouter",
@@ -1993,8 +2001,7 @@
   "https://huggingface.co/blog/sovereign-data-solution-case-study",
   "https://huggingface.co/blog/datasets-filters",
   "https://huggingface.co/blog/intel-protein-language-model-protst",
-  "https://huggingface.co/blog/beating-gaia",
-  "https://huggingface.co/blog/gemma2"
+  "https://huggingface.co/blog/beating-gaia"
  ],
  "Instagram": [
   "https://engineering.fb.com/?p=24735",
@@ -2228,6 +2235,7 @@
   "https://engineering.fb.com/?p=24763"
  ],
  "Microsoft": [
+  "https://devblogs.microsoft.com/?p=22768",
   "https://devblogs.microsoft.com/?p=22760",
   "https://devblogs.microsoft.com/?p=22747",
   "https://devblogs.microsoft.com/?p=22686",
@@ -2369,12 +2377,14 @@
   "https://meetup.nhncloud.com/posts/417"
  ],
  "NVIDIA Technical Blog": [
+  "https://developer.nvidia.com/blog/?p=125793",
   "https://developer.nvidia.com/blog/?p=125590",
   "https://developer.nvidia.com/blog/?p=125645",
   "https://developer.nvidia.com/blog/?p=125753",
   "https://developer.nvidia.com/blog/?p=125610",
   "https://developer.nvidia.com/blog/?p=125662",
   "https://developer.nvidia.com/blog/?p=125633",
+  "https://developer.nvidia.com/blog/?p=125654",
   "https://developer.nvidia.com/blog/?p=125485",
   "https://developer.nvidia.com/blog/?p=124964",
   "https://developer.nvidia.com/blog/?p=125544",
@@ -2384,8 +2394,8 @@
   "https://developer.nvidia.com/blog/?p=124831",
   "https://developer.nvidia.com/blog/?p=125224",
   "https://developer.nvidia.com/blog/?p=124884",
-  "https://developer.nvidia.com/blog/?p=125323",
   "https://developer.nvidia.com/blog/?p=125279",
+  "https://developer.nvidia.com/blog/?p=125323",
   "https://developer.nvidia.com/blog/?p=125124",
   "https://developer.nvidia.com/blog/?p=125204",
   "https://developer.nvidia.com/blog/?p=121180",
@@ -2508,6 +2518,7 @@
   "https://developer.nvidia.com/blog/?p=121715"
  ],
  "Naver D2": [
+  "https://d2.naver.com/helloworld/7426315",
   "https://d2.naver.com/helloworld/5073599",
   "https://d2.naver.com/helloworld/6934862",
   "https://d2.naver.com/helloworld/5512498",
@@ -4064,6 +4075,7 @@
   "https://www.uber.com/us/en/blog/evolving-ubers-compute-platform"
  ],
  "Vercel": [
+  "https://vercel.com/blog/how-cozey-turns-its-operators-into-software-builders-on-vercel",
   "https://vercel.com/blog/kazunari-hanao-joins-vercel-as-country-manager-japan",
   "https://vercel.com/blog/ja-kazunari-hanao-joins-vercel-as-country-manager-japan",
   "https://vercel.com/blog/introducing-audited-zdr-on-ai-gateway",
@@ -4562,8 +4574,7 @@
   "https://vercel.com/blog/vercel-remote-cache-turbo",
   "https://vercel.com/blog/super-serves-thousands-of-domains-on-one-project-with-next-js-and-vercel",
   "https://vercel.com/blog/gpt-3-app-next-js-vercel-edge-functions",
-  "https://vercel.com/blog/behind-the-scenes-of-vercels-infrastructure",
-  "https://vercel.com/blog/how-plex-6x-their-impressions-deploying-next-js-on-vercel"
+  "https://vercel.com/blog/behind-the-scenes-of-vercels-infrastructure"
  ],
  "eBay": [
   "https://innovation.ebayinc.com/stories/inside-minerva-building-scalable-observability-for-ebays-monetization-platform/",
@@ -4598,6 +4609,9 @@
   "https://innovation.ebayinc.com/stories/lauren-wilcox-named-2023-acm-distinguished-member/"
  ],
  "kt cloud": [
+  "https://tech.ktcloud.com/545",
+  "https://tech.ktcloud.com/544",
+  "https://tech.ktcloud.com/543",
   "https://tech.ktcloud.com/542",
   "https://tech.ktcloud.com/541",
   "https://tech.ktcloud.com/540",
@@ -5032,6 +5046,7 @@
   "https://medium.com/p/e65b2cfd687e"
  ],
  "뱅크샐러드": [
+  "https://corp.banksalad.com/blog/culture/bfs-interview-2/",
   "https://corp.banksalad.com/blog/news/bs1504/",
   "https://corp.banksalad.com/blog/culture/bfs-ai-native-sales/",
   "https://corp.banksalad.com/blog/culture/bfs-interview-1/",
@@ -5635,6 +5650,7 @@
   "https://medium.com/p/5ae2b8514e41"
  ],
  "요기요": [
+  "https://medium.com/p/91a3af71a2a4",
   "https://medium.com/p/0f3185b021b6",
   "https://medium.com/p/f6c1db423de9",
   "https://medium.com/p/17b3db81121d",
@@ -5789,6 +5805,7 @@
   "https://tech.channel.io/kr/articles/03b2a039"
  ],
  "카카오": [
+  "https://tech.kakao.com/posts/850",
   "https://tech.kakao.com/posts/848",
   "https://tech.kakao.com/posts/849",
   "https://tech.kakao.com/posts/847",
@@ -5930,6 +5947,7 @@
   "https://devblog.kakaostyle.com/ko/2017-01-01-1-start-devblog/"
  ],
  "카카오페이": [
+  "https://tech.kakaopay.com/post/multi-agent-ai-code-reviewer-jorgit",
   "https://tech.kakaopay.com/post/ifkakao26-ai-change-organization-preparation",
   "https://tech.kakaopay.com/post/ai-agent-2",
   "https://tech.kakaopay.com/post/no-more-oom-log-pipeline",
@@ -5980,6 +5998,7 @@
   "https://toss.tech/article/52999"
  ],
  "플렉스 (flex)": [
+  "https://flex.team/blog/2026/11/26/flex-ai-launch-webinar",
   "https://flex.team/blog/2026/11/18/dt-future-forum-esg",
   "https://flex.team/blog/2026/11/18/caio-techtrend-3",
   "https://flex.team/blog/2026/11/16/2026-11-flex-black-invitational-2026-hyunseo",
