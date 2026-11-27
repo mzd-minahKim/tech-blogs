@@ -1502,7 +1502,9 @@
   "https://engineering.grab.com/crowdsourced-taxonomy-verification"
  ],
  "Hugging Face": [
+  "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
   "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+  "https://huggingface.co/blog/training-swarms",
   "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents",
   "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
   "https://huggingface.co/blog/inkling-2-mini-inference-hillclimb",
@@ -1514,7 +1516,6 @@
   "https://huggingface.co/blog/moe-expert-streaming",
   "https://huggingface.co/blog/rumble-2-flash",
   "https://huggingface.co/blog/openrouter",
-  "https://huggingface.co/blog/ggml-org/llama-cpp-v1",
   "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite",
   "https://huggingface.co/blog/3d-lora-finetuning",
   "https://huggingface.co/blog/qvac/botpsy",
@@ -2000,8 +2001,7 @@
   "https://huggingface.co/blog/tpu-inference-endpoints-spaces",
   "https://huggingface.co/blog/sovereign-data-solution-case-study",
   "https://huggingface.co/blog/datasets-filters",
-  "https://huggingface.co/blog/intel-protein-language-model-protst",
-  "https://huggingface.co/blog/beating-gaia"
+  "https://huggingface.co/blog/intel-protein-language-model-protst"
  ],
  "Instagram": [
   "https://engineering.fb.com/?p=24735",
@@ -2071,9 +2071,9 @@
  ],
  "LinkedIn": [
   "https://www.linkedin.com/blog/engineering/search/reimagining-linkedins-search-stack",
+  "https://www.linkedin.com/blog/engineering/infrastructure/the-database-pin-zero-downtime-database-migrations-with-strong-read-after-write-consistency",
   "https://www.linkedin.com/blog/engineering/ai/where-agents-meet-the-browser-building-a-browser-native-agent",
   "https://www.linkedin.com/blog/engineering/infrastructure/composable-torch-dataloader-a-high-performance-modular-dataloader-for-pytorch",
-  "https://www.linkedin.com/blog/engineering/infrastructure/how-linkedin-runs-compute-self-managed-kubernetes-on-500000-bare-metal-servers",
   "https://www.linkedin.com/blog/engineering/culture/announcing-our-linkedin-cornell-2024-grant-recipients",
   "https://www.linkedin.com/blog/engineering/culture/career-stories--the-math-music-connection-in-data-science",
   "https://www.linkedin.com/blog/engineering/culture/career-stories--influencing-engineering-growth-at-linkedin",
@@ -2083,6 +2083,7 @@
   "https://www.linkedin.com/blog/engineering/talent/driving-data-enhancement-and-recruitment-success-with-linkedins-unified-integrations",
   "https://www.linkedin.com/blog/engineering/infrastructure/optimizing-linkedin-sales-navigators-search-pipeline-with-spark",
   "https://www.linkedin.com/blog/engineering/infrastructure/introducing-northguard-and-xinfra",
+  "https://www.linkedin.com/blog/engineering/infrastructure/how-linkedin-runs-compute-self-managed-kubernetes-on-500000-bare-metal-servers",
   "https://www.linkedin.com/blog/engineering/infrastructure/rebuilding-data-lineage-at-linkedin-from-storage-to-compute",
   "https://www.linkedin.com/blog/engineering/analytics/building-view-agnostic-analytics-for-modern-ios-ui-systems",
   "https://www.linkedin.com/blog/engineering/feed/profile-relevance-boosting-feed-relevance-with-llms-at-linkedin",
@@ -5426,6 +5427,7 @@
   "https://www.bucketplace.com/post/2026-01-14-오늘의집-검색-모든-언어와-도메인을-아우르는-일반화된-retrieval-시스템-만들기"
  ],
  "올리브영": [
+  "https://oliveyoung.tech/2026-11-27/global-offline-system-open/",
   "https://oliveyoung.tech/2026-10-29/%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%98%81-pm%EC%9D%B4-ai%EC%99%80-%ED%95%A8%EA%BB%98-%EC%9D%BC%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D/",
   "https://oliveyoung.tech/2026-10-20/oy-conference-2026-notice/",
   "https://oliveyoung.tech/2026-09-30/decompiler_ai/",
@@ -5663,6 +5665,7 @@
   "https://medium.com/p/7b09c0b2183b"
  ],
  "우아한형제들": [
+  "https://techblog.woowa.in/?p=28589",
   "https://techblog.woowa.in/?p=28276",
   "https://techblog.woowa.in/?p=28538",
   "https://techblog.woowa.in/?p=28524",
@@ -5746,6 +5749,7 @@
   "https://tech.inflab.com/202201-event-postmortem/"
  ],
  "채널톡": [
+  "https://tech.channel.io/kr/articles/978765a4",
   "https://tech.channel.io/kr/articles/d87a6773",
   "https://tech.channel.io/kr/articles/92cd237e",
   "https://tech.channel.io/kr/articles/8029b017",
